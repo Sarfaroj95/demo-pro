@@ -48,6 +48,11 @@
     margin-bottom: 6px;
 }
 
+a{
+ text-decoration: none;
+ color: #000;
+}
+
 .title{
     margin: 50px;
 }

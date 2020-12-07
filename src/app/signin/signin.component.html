@@ -2,32 +2,72 @@
     <div class="container">
         <div class="global-container">
             <div class="mobileh">
-                <h1>Welcome!</h1>
-                <h2>Let's get started Now!</h2>
+                <div *ngIf="!auth.isLoggedIn()">
+                    <h1>Welcome!</h1>
+                    <h2>Let's get started Now!</h2>
+                </div>
+                <div *ngIf="auth.isLoggedIn()">
+                    <h1 class="text-capitalize">{{userData.fname}} {{userData.lname}} !</h1>
+                    <h2>{{userData.phone}}</h2>
+                    <h2>{{userData.email}}</h2>
+                    <hr style="background-color: #fff !important;" />
+                    <button (click)="logout()" class="btn btn-danger">Logout</button>
+                </div>
+
+
             </div>
-            <div class="card login-form">
+            <div *ngIf="!auth.isLoggedIn()" class="card login-form">
                 <div class="card-body">
                     <h3 class="card-title text-center">Sign In</h3>
                     <div class="card-text">
-                        <!--
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
-                        <form>
-                            <!-- to error: add class "has-danger" -->
+
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control form-control-sm" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <!-- <label>Email address</label> -->
+                                <input type="email" placeholder="Email address" class="form-control form-control-sm"
+                                    formControlName="email" required>
+                                <div *ngIf="
+                                            loginForm.controls['email'].invalid &&
+                                            (loginForm.controls['email'].dirty ||
+                                              loginForm.controls['email'].touched)
+                                          " class="text-danger txt">
+                                    <span *ngIf="loginForm.controls['email'].errors.required" class="text-danger">
+                                        Email is required.
+                                    </span>
+                                    <span *ngIf="loginForm.controls['email'].errors.pattern" class="text-danger">
+                                        Must be Valid email format.
+                                    </span>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <!-- <a href="#" style="float:right;font-size:12px;">Forgot password?</a> -->
-                                <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+                                <!-- <label>Password</label> -->
+                                <input type="password" placeholder="Password" class="form-control form-control-sm"
+                                    formControlName="password" required>
+                                <div *ngIf="
+                                            loginForm.controls['password'].invalid &&
+                                            (loginForm.controls['password'].dirty ||
+                                              loginForm.controls['password'].touched)
+                                          " class="text-danger txt">
+                                    <span *ngIf="loginForm.controls['password'].errors.required" class="text-danger">
+                                        Password is required.
+                                    </span>
+                                </div>
+
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            <div class="mt-5">
+                                <button [disabled]="!loginForm.valid" class="btn btn-primary btn-block">Sign
+                                    in</button>
+
+                            </div>
+
 
                             <div class="sign-up">
                                 Don't have an account? <a routerLink="/signup">Create an account</a>
                             </div>
+
+                            <!-- <button class="btn btn-success btn-block">
+                                Submit
+                            </button> -->
                         </form>
                     </div>
                 </div>

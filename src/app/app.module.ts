@@ -1,6 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from "./app-routing.module"
+import {
+  HttpClientModule, HTTP_INTERCEPTORS
+} from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { ToastrModule } from "ng6-toastr-notifications";
+import { AuthGuardService } from "./service/auth-guard.service"
+import { TokenInterceptor } from "./service/interceptor.service"
+import { AuthService } from "./service/service.service"
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -31,9 +42,21 @@ import { RecentjobComponent } from './home/recentjob/recentjob.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    CommonModule,
+    ToastrModule.forRoot()
+
+
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
