@@ -14,6 +14,7 @@ export class CareerComponent implements OnInit {
 
   careerForm: FormGroup
   submitbtn: boolean = false
+  selectedcounty = "CA";
   constructor(private fb: FormBuilder, private toastr: ToastrManager, private auth: AuthService, private router: Router) { }
 
   city: any = [
