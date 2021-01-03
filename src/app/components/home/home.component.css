@@ -1,0 +1,54 @@
+.body{
+    background-color: #EFEFED;
+    padding-top: 50px;
+    padding-bottom: 50px;
+   display: flex;
+   justify-content: center;
+  
+
+
+}
+.main-part{
+     width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.header{
+ 
+  background: url('../../../assets/hr3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 340px;
+
+  
+}
+.header-center{
+    display: flex;
+   align-items: center;
+   height: 100%;
+}
+.header-card{
+    background-color: rgba(0, 0,0,0.6);
+    width: 350px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff; 
+    padding: 15px 0px 15px 20px;
+    
+   
+}
+.title{
+    text-transform: capitalize;
+    font-size: 26px;  
+}
+
+.sub-title{
+    font-size: 16px;
+    font-weight: 300;
+     margin-top: -10px; 
+}
+
+.second-section{
+    padding: 50px;
+    background-color:#fff;
+}

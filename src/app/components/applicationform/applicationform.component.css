@@ -1,0 +1,7 @@
+.label{
+    font-size: 16px;
+    padding-top: 8px;
+}
+.form-control{
+    border-radius: 0px !important;
+}
