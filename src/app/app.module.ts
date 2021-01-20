@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbdTypeaheadFormat } from './typeahead-format';
 
 import { MaterialsModule } from './material/material.module';
 import { HomeComponent } from './components/home/home.component';
@@ -13,14 +15,16 @@ import { ApplicationformComponent } from './components/applicationform/applicati
   declarations: [
     AppComponent,
     HomeComponent,
-    ApplicationformComponent
+    ApplicationformComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
 
   ],
   providers: [],
