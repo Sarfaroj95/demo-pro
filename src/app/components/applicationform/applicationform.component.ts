@@ -89,6 +89,7 @@ export class ApplicationformComponent implements OnInit {
 
   onSubmit() {
     console.log("Submit value", this.appForm.value)
+    this.appForm.reset();
     Swal.fire(
       'Successful',
       'Thank you for getting in touch! We appreciate you contacting us',
