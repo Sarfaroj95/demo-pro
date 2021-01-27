@@ -1,5 +1,5 @@
 <!-- <h2>Application form</h2> -->
-<form [formGroup]="appForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="appForm">
 
 
     <div class="row">
@@ -8,7 +8,19 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <input type="email" class="form-control" formControlName="name" placeholder="Enter Name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+                <div *ngIf="
+                            appForm.controls['name'].invalid &&
+                            (appForm.controls['name'].dirty ||
+                                appForm.controls['name'].touched)
+                            " class="text-danger txt">
+                    <span *ngIf="appForm.controls['name'].errors.required" class="text-danger">
+                        Name is required.
+                    </span>
+                    <span *ngIf="appForm.controls['name'].errors.pattern" class="text-danger">
+                        Name must be alphabet.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -20,6 +32,18 @@
         <div class="col-md-8">
             <div class="form-group">
                 <input type="email" class="form-control" formControlName="email" placeholder="Enter Email">
+                <div *ngIf="
+                            appForm.controls['email'].invalid &&
+                            (appForm.controls['email'].dirty ||
+                                appForm.controls['email'].touched)
+                            " class="text-danger txt">
+                    <span *ngIf="appForm.controls['email'].errors.required" class="text-danger">
+                        Email is required.
+                    </span>
+                    <span *ngIf="appForm.controls['email'].errors.pattern" class="text-danger">
+                        Must be Valid email format.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -29,7 +53,21 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter phone number">
+                <input type="text" formControlName="phone" class="form-control" placeholder="Enter phone number"
+                    maxlength="10">
+
+                <div *ngIf="
+                        appForm.controls['phone'].invalid &&
+                        (appForm.controls['phone'].dirty ||
+                            appForm.controls['phone'].touched)
+                        " class="text-danger txt">
+                    <span *ngIf="appForm.controls['phone'].errors.required" class="text-danger">
+                        Phone is required.
+                    </span>
+                    <span *ngIf="appForm.controls['phone'].errors.pattern" class="text-danger">
+                        Must be valid phone format.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -41,14 +79,38 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Year">
+                        <input type="text" formControlName="year" class="form-control" id="exampleInputEmail1"
+                            placeholder="Enter Year" maxlength="4">
+                        <div *ngIf="
+                                                    appForm.controls['year'].invalid &&
+                                                    (appForm.controls['year'].dirty ||
+                                                        appForm.controls['year'].touched)
+                                                    " class="text-danger txt">
+                            <span *ngIf="appForm.controls['year'].errors.required" class="text-danger">
+                                Year is required.
+                            </span>
+                            <span *ngIf="appForm.controls['year'].errors.pattern" class="text-danger">
+                                Must be valid numeric.
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Month">
+                        <input type="text" formControlName="month" class="form-control" id="exampleInputEmail1"
+                            placeholder="Enter Month" maxlength="2">
+                        <div *ngIf="
+                                    appForm.controls['month'].invalid &&
+                                    (appForm.controls['month'].dirty ||
+                                        appForm.controls['month'].touched)
+                                    " class="text-danger txt">
+                            <span *ngIf="appForm.controls['month'].errors.required" class="text-danger">
+                                Month is required.
+                            </span>
+                            <span *ngIf="appForm.controls['month'].errors.pattern" class="text-danger">
+                                Must be valid numeric.
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,8 +122,21 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" class="form-control" formControlName="qualification"
                     placeholder="Enter Highest Qualification">
+                <div *ngIf="
+                        appForm.controls['qualification'].invalid &&
+                        (appForm.controls['qualification'].dirty ||
+                            appForm.controls['qualification'].touched)
+                        " class="text-danger txt">
+                    <span *ngIf="appForm.controls['qualification'].errors.required" class="text-danger">
+                        Qualification is required.
+                    </span>
+                    <span *ngIf="appForm.controls['qualification'].errors.pattern" class="text-danger">
+                        Must be valid alphabet.
+                    </span>
+                </div>
+
             </div>
         </div>
     </div>
@@ -71,8 +146,20 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" class="form-control" formControlName="current_organization"
                     placeholder="Enter Organisation name">
+                <div *ngIf="
+                            appForm.controls['current_organization'].invalid &&
+                            (appForm.controls['current_organization'].dirty ||
+                                appForm.controls['current_organization'].touched)
+                            " class="text-danger txt">
+                    <span *ngIf="appForm.controls['current_organization'].errors.required" class="text-danger">
+                        Organization is required.
+                    </span>
+                    <span *ngIf="appForm.controls['current_organization'].errors.pattern" class="text-danger">
+                        Must be valid alphabet.
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -86,28 +173,18 @@
                     <div formArrayName="total_worked">
                         <div *ngFor="let item of sellingPoints.controls; let pointIndex=index"
                             [formGroupName]="pointIndex">
-
                             <div class="form-group">
                                 <div class="input-group">
-
-
                                     <input type="text" class="form-control" formControlName="worked"
                                         placeholder="Enter Organisation name">
                                     <span class="input-group-text" (click)="deleteSellingPoint(pointIndex)">
-                                        -
+                                        &#8722;
                                     </span>
                                 </div>
-
-
                             </div>
-
-
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="col-md-2">
                     <button mat-mini-fab color="warn" (click)="addSellingPoint()">
                         <mat-icon>add</mat-icon>
@@ -123,17 +200,13 @@
             <p class="label">Known Technologys</p>
         </div>
         <div class="col-md-8">
-
-
             <div class="row">
                 <div class="col-md-10">
                     <div formArrayName="total_technology">
                         <div *ngFor="let item of totalTech.controls; let techIndex=index" [formGroupName]="techIndex">
                             <div class="d-flex">
-
-
                                 <div class="form-group w-50">
-                                    <input id="typeahead-format" type="text" class="form-control" [(ngModel)]="model"
+                                    <input id="typeahead-format" type="text" class="form-control"
                                         [ngbTypeahead]="search" [resultFormatter]="formatter" formControlName="tech"
                                         placeholder="Enter Technology">
                                 </div>
@@ -142,7 +215,7 @@
                                         <input type="email" class="form-control" formControlName="rating"
                                             placeholder="Rating (1-10)">
                                         <span class="input-group-text" (click)="DeleteTechRow(techIndex)">
-                                            -
+                                            &#8722;
                                         </span>
                                     </div>
                                 </div>
@@ -163,14 +236,65 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-4">
+            <p class="label">Technologys Expertice</p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-10">
+                    <div formArrayName="total_expertice">
+                        <div *ngFor="let item of totalExpert.controls; let expIndex=index" [formGroupName]="expIndex">
+                            <div class="d-flex">
+                                <div class="form-group w-50">
+                                    <input id="typeahead-format" type="text" class="form-control"
+                                        [ngbTypeahead]="search" [resultFormatter]="formatter" formControlName="expert"
+                                        placeholder="Enter Technology">
+                                </div>
+                                <div class="form-group w-50">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" formControlName="level"
+                                            placeholder="Level (1-10)">
+                                        <span class="input-group-text" (click)="DeleteExpertRow(expIndex)">
+                                            &#8722;
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mr-0">
+                    <button mat-mini-fab color="warn" (click)="AddExpertRow()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="label">Schedule Time</p>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <input type="time" class="form-control" formControlName="time"
+                    placeholder="Enter Highest Qualification">
+            </div>
+        </div>
+    </div>
+
 
 
     <div class="row">
         <div class="col-md-4">
-
         </div>
         <div class="col-md-8">
-            <button mat-raised-button color="primary">Submit</button>
+            <!-- <button mat-raised-button color="primary">Submit</button> -->
+            <button type="submit" [disabled]="!appForm.valid" (click)="onSubmit()" class="btn btn-dark rounded-0"
+                style="box-shadow: 0 8px 6px -6px black;">Submit</button>
         </div>
     </div>
 
@@ -178,7 +302,7 @@
 </form>
 
 
-<div class="border p-2 mt-3">
+<!-- <div class="border p-2 mt-3">
 
     {{ this.appForm.value | json }}
-</div>
+</div> -->

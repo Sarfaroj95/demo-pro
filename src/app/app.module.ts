@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NgbdTypeaheadFormat } from './typeahead-format';
 
 import { MaterialsModule } from './material/material.module';
+import Swal from 'sweetalert2'
 import { HomeComponent } from './components/home/home.component';
 import { ApplicationformComponent } from './components/applicationform/applicationform.component';
 
@@ -24,7 +25,8 @@ import { ApplicationformComponent } from './components/applicationform/applicati
     MaterialsModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+
 
   ],
   providers: [],
