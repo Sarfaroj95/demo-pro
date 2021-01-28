@@ -93,7 +93,7 @@ export class ApplicationformComponent implements OnInit {
     Swal.fire(
       'Successful',
       'Thank you for getting in touch! We appreciate you contacting us',
-      'success'
+      'success',
     )
   }
 
